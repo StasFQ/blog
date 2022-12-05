@@ -1,0 +1,20 @@
+
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+    <div class="main">
+    {% for post in object_list %}
+<li><a href="{% url 'PostDetail' post.id %}">{{ post.text }}</a></li>
+{% empty %}
+    <li>No Posts.</li>
+{% endfor %}
+    </div>
+{% endblock %}
+</body>
+</html>

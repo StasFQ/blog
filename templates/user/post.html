@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{{ object.title }}
+<p>{{ object.text }}</p>
+{% for comment in object.comment_set.all %}
+    {{ comment.username }}
+    <p>{{ comment }}</p>
+{% endfor %}
+<p><a href="{% url 'comment_view' object.id %}">Leave comment</a></p>
+</body>
+</html>
