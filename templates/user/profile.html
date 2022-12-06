@@ -1,13 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Profile Page{% endblock title %}
+{% block content %}
+    <div class="row my-3 p-3">
+        <h1>This is the profile page for {{user.username}}</h1>
+    </div>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-        <center><h1>{{ object }}</h1></center>
-<p>{{ object.title }}</p>
-
-</body>
-</html>
+{% endblock content %}

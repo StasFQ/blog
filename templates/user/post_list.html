@@ -10,7 +10,7 @@
 {% block content %}
     <div class="main">
     {% for post in object_list %}
-<li><a href="{% url 'PostDetail' post.id %}">{{ post.text }}</a></li>
+<li><a href="{% url 'PostDetail' post.id %}">{{ post.title }}</a></li>
 {% empty %}
     <li>No Posts.</li>
 {% endfor %}

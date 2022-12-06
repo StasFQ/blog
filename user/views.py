@@ -3,8 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views import generic
 from django.core.mail import send_mail
-from user.form import PostCreateForm, CommentCreateForm
-from user.models import Post, Comment
+from user.form import PostCreateForm, CommentCreateForm, UpdateUserForm, UpdateProfileForm
+from user.models import Post, Comment, Profile
 
 User = settings.AUTH_USER_MODEL
 
@@ -49,12 +49,13 @@ def comment_view(request, pk):
     return render(request, 'user/comment_view.html', {'form': form})
 
 
-class Profile(generic.DetailView):
-    model = Post
-    template_name = 'user/profile.html'
 
-    def get_queryset(self):
-        return Post.objects.filter()
+@login_required
+def profile(request):
+    user = request.user
+    return render(request, 'user/profile.html', {'user': user})
+
+
 
 
 

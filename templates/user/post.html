@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,13 +6,15 @@
     <title>Title</title>
 </head>
 <body>
-
+{% block content %}
 {{ object.title }}
 <p>{{ object.text }}</p>
+    <h4>Comments</h4>
 {% for comment in object.comment_set.all %}
     {{ comment.username }}
     <p>{{ comment }}</p>
 {% endfor %}
 <p><a href="{% url 'comment_view' object.id %}">Leave comment</a></p>
+{% endblock %}
 </body>
 </html>
