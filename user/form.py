@@ -1,16 +1,16 @@
 from django import forms
 from django.contrib.auth.models import User
-
 from user.models import Post, Comment, Profile
 
 
 class PostCreateForm(forms.ModelForm):
     title = forms.CharField()
+    short_description = forms.CharField()
     text = forms.Textarea()
 
     class Meta:
         model = Post
-        fields = ['title', 'text', 'is_published']
+        fields = ['title', 'short_description', 'text', 'is_published', 'image']
 
 
 class CommentCreateForm(forms.ModelForm):
@@ -19,12 +19,6 @@ class CommentCreateForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['comment']
-
-
-from django import forms
-
-from django.contrib.auth.models import User
-from .models import Profile
 
 
 class UpdateUserForm(forms.ModelForm):
@@ -46,3 +40,9 @@ class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['avatar', 'bio']
+
+
+class ContactUs(forms.Form):
+    email = forms.EmailField(required=True)
+    subject = forms.CharField(max_length=230)
+    text = forms.CharField(widget=forms.Textarea)

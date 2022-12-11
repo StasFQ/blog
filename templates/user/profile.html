@@ -4,5 +4,13 @@
     <div class="row my-3 p-3">
         <h1>This is the profile page for {{user.username}}</h1>
     </div>
+    <h3>Posts</h3>
+    {% for p in post %}
+        <a href="{% url 'PostDetail' p.id %}">{{ p }}</a> -
+        <a href="{% url 'update_post' p.id %}">[edit]</a>
+        <p></p>
+    {% endfor %}
+    <a href="{% url 'UpdateData' %}" >Update data</a>
+    <p><a href="{% url 'not_published_posts'%}">Public posts</a></p>
 
 {% endblock content %}

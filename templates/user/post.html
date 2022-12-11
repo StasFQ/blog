@@ -8,6 +8,11 @@
 <body>
 {% block content %}
 {{ object.title }}
+    {% if object.author.id  %}
+    <a href="{% url 'public_profile' object.author.id %}">{{ object.author }}</a>
+    {% endif %}
+<p>{{ object.short_description }}</p>
+    <img src="{{ object.image }}">
 <p>{{ object.text }}</p>
     <h4>Comments</h4>
 {% for comment in object.comment_set.all %}

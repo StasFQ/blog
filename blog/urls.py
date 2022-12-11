@@ -24,8 +24,10 @@ from accounts.views import RegisterFormPage
 urlpatterns = [
     #  path('', main_page, name='main_page'),
     path('admin/', admin.site.urls),
-    path('account/', include('django.contrib.auth.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('user/', include('user.urls')),
     path('register/', RegisterFormPage.as_view(), name='RegisterFormPage'),
 
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
+if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

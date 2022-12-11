@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% block content %}
+    <div class="row my-3 p-3">
+        <h1>This is the profile page for {{profile.username}}</h1>
+    </div>
+        <h3>Posts</h3>
+    {% for p in post %}
+        <a href="{% url 'PostDetail' p.id %}">{{ p }}</a>
+        <p></p>
+    {% endfor %}
+    {% endblock %}
+</body>
+</html>

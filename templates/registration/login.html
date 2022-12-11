@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,10 +6,13 @@
     <title>Title</title>
 </head>
 <body>
+{% block content %}
     <form  method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Create">
+    <input type="submit" value="Login">
 </form>
+    <p><a href="{% url 'RegisterFormPage' %}">Dont have account?</a></p>
+{% endblock %}
 </body>
 </html>
