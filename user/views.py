@@ -7,6 +7,7 @@ from django.core.mail import send_mail
 from django.views.generic import UpdateView
 from django.contrib.auth.models import User
 from django.views.generic.list import MultipleObjectMixin
+from django.contrib import messages
 
 from accounts.forms import LoginForm
 from user.form import PostCreateForm, CommentCreateForm, UpdateUserForm, UpdateProfileForm, ContactUs
@@ -32,9 +33,9 @@ def create_posts(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            img_object = form.instance
             send_mail('Post Create', 'Someone create post', 'admin1@example.com', ['admin@example.com'])
-            return redirect('PostList'), render(request, 'user/create_post.html', {'form': form, 'img_obj': img_object})
+            messages.add_message(request, messages.SUCCESS, 'Post Create!')
+            return redirect('PostList')
     return render(request, 'user/create_post.html', {'form': form})
 
 
@@ -46,6 +47,7 @@ def update_post(request, post_id):
         form = PostCreateForm(request.POST, instance=post)
         if form.is_valid():
             form.save()
+            messages.add_message(request, messages.SUCCESS, 'Post Update!')
             return redirect('Profile')
     else:
         form = PostCreateForm(instance=post)
@@ -72,6 +74,7 @@ def comment_view(request, pk):
             Comment.objects.create(username=username, comment=comment, post_id=pk)
             send_mail('Comment Create', 'Someone leave comment', 'admin@example.com', ['admin@example.com'])
             send_mail('Commet', 'Someone leave comment undr your post', 'admin@example.com', [])
+            messages.add_message(request, messages.SUCCESS, 'Comment sent')
             return redirect('PostDetail', pk)
     return render(request, 'user/comment_view.html', {'form': form})
 
@@ -109,6 +112,6 @@ def contact_us(request):
             subject = form.cleaned_data['subject']
             text = form.cleaned_data['text']
             send_mail(subject, text, email, ['admin@example.com'])
-            redirect('PostList')
+            messages.add_message(request, messages.SUCCESS, 'Message sent')
             return redirect('PostList')
     return render(request, 'registration/contact_us.html', {'form': form})

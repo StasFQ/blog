@@ -6,10 +6,23 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
     <title>{% block title %} {% endblock %} </title>
 </head>
 <body>
+{% if messages %}
+    <div class="row">
+      <div class="col-sm-12">
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }} alert-dismissible text-center" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
+            <strong>{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error{% else %}
+              {{ message.tags|title }}{% endif %}!</strong> {{ message }}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
   <div class="container p-3 my-3">
     <div class="row">
       <div class="col-md-12">
@@ -23,7 +36,7 @@
                   <a href="{% url 'Profile'  %}" class="nav-item nav-link">Profile</a>
                   <a href="{% url 'logout'  %}" class="nav-item nav-link">Logout</a>
                   <a href="{% url 'login'  %}" class="nav-item nav-link">Sign in</a>
-                  <a href="{% url 'contact_us'  %}" class="nav-item nav-link">Contact Us</a>
+                  <>Contact Us
                 </div>
             </div>
         </nav>
