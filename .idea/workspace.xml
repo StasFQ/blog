@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5eb218a1-890f-4ad4-bb18-1b09c603723d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +90,7 @@
       <workItem from="1669897613673" duration="61484000" />
       <workItem from="1670656546161" duration="12224000" />
       <workItem from="1670842924032" duration="26344000" />
-      <workItem from="1671023795002" duration="502000" />
+      <workItem from="1671023795002" duration="1106000" />
     </task>
     <servers />
   </component>

@@ -33,6 +33,10 @@ def create_posts(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
+            subject = 'Post create'
+            text = 'I create post'
+            email = request.user.email
+            tasks.send_mail.delay(subject, text, email)
             messages.add_message(request, messages.SUCCESS, 'Post Create!')
             return redirect('PostList')
     return render(request, 'user/create_post.html', {'form': form})
@@ -71,6 +75,10 @@ def comment_view(request, pk):
             username = request.user
             comment = form.cleaned_data['comment']
             Comment.objects.create(username=username, comment=comment, post_id=pk)
+            subject = 'Comment create'
+            text = 'I create comment'
+            email = request.user.email
+            tasks.send_mail.delay(subject, text, email)
             messages.add_message(request, messages.SUCCESS, 'Comment sent')
             return redirect('PostDetail', pk)
     return render(request, 'user/comment_view.html', {'form': form})
