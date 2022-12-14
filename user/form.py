@@ -43,6 +43,5 @@ class UpdateProfileForm(forms.ModelForm):
 
 
 class ContactUs(forms.Form):
-    email = forms.EmailField(required=True)
     subject = forms.CharField(max_length=230)
     text = forms.CharField(widget=forms.Textarea)

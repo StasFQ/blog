@@ -1,7 +1,7 @@
 <form method="post" action="{% url 'contact_us' %}" class="js-contacus-form">
   {% csrf_token %}
   <div class="modal-header">
-    <h4 class="modal-title">Create a new book</h4>
+    <h4 class="modal-title">Contact us</h4>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -11,6 +11,6 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    <button type="submit" class="btn btn-primary">Create book</button>
+    <button type="submit" class="btn btn-primary">Send</button>
   </div>
 </form>

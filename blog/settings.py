@@ -110,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Kyiv'
 
 USE_I18N = True
 
@@ -127,7 +127,7 @@ STATICFILES_DIRS = (
 )
 
 MEDIA_ROOT = (
-BASE_DIR
+    BASE_DIR
 )
 
 
@@ -143,3 +143,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 LOGIN_REDIRECT_URL = "/user/profile/"
+
+
+CELERY_TIMEZONE = TIME_ZONE
+CELERY_TASK_TRACK_STARTED = True
+CELERY_BROKER_URL = "amqp://localhost"
+CELERY_TASK_TIME_LIMIT = 30 * 60

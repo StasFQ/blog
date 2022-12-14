@@ -6,17 +6,14 @@ from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.views import generic
-from django.core.mail import send_mail
 from django.views.generic import UpdateView
 from django.contrib.auth.models import User
-from django.views.generic.list import MultipleObjectMixin
 from django.contrib import messages
 
 from accounts.forms import LoginForm
+from user import tasks
 from user.form import PostCreateForm, CommentCreateForm, UpdateUserForm, UpdateProfileForm, ContactUs
 from user.models import Post, Comment, Profile
-
-#User = settings.AUTH_USER_MODEL
 
 
 class PostList(generic.ListView):
@@ -36,7 +33,6 @@ def create_posts(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            send_mail('Post Create', 'Someone create post', 'admin1@example.com', ['admin@example.com'])
             messages.add_message(request, messages.SUCCESS, 'Post Create!')
             return redirect('PostList')
     return render(request, 'user/create_post.html', {'form': form})
@@ -75,8 +71,6 @@ def comment_view(request, pk):
             username = request.user
             comment = form.cleaned_data['comment']
             Comment.objects.create(username=username, comment=comment, post_id=pk)
-            send_mail('Comment Create', 'Someone leave comment', 'admin@example.com', ['admin@example.com'])
-            send_mail('Commet', 'Someone leave comment undr your post', 'admin@example.com', [])
             messages.add_message(request, messages.SUCCESS, 'Comment sent')
             return redirect('PostDetail', pk)
     return render(request, 'user/comment_view.html', {'form': form})
@@ -113,10 +107,10 @@ def contact_us(request):
         form = ContactUs(request.POST)
         if form.is_valid():
             data['form_is_valid'] = True
-            email = form.cleaned_data['email']
+            email = request.user.email
             subject = form.cleaned_data['subject']
             text = form.cleaned_data['text']
-            send_mail(subject, text, email, ['admin@example.com'])
+            tasks.send_mail.delay(subject, text, email)
             messages.add_message(request, messages.SUCCESS, 'Message sent')
         else:
             data['form_is_valid'] = False
@@ -125,4 +119,3 @@ def contact_us(request):
     context = {'form': form}
     data['html_form'] = render_to_string('user/includes/feedback_create.html', context, request=request)
     return JsonResponse(data)
-
