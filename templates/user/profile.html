@@ -10,6 +10,7 @@
         <a href="{% url 'update_post' p.id %}">[edit]</a>
         <p></p>
     {% endfor %}
+    <p>Всего ваших коментариев: {{ comments }}</p>
     <a href="{% url 'UpdateData' %}" >Update data</a>
     <p><a href="{% url 'not_published_posts'%}">Public posts</a></p>
 

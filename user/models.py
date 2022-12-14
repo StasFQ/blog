@@ -9,7 +9,7 @@ class Post(models.Model):
     short_description = models.CharField(max_length=230, default='Post')
     text = models.TextField()
     is_published = models.BooleanField(default=False)
-    image = models.ImageField(upload_to='media/profile_images')
+    image = models.ImageField(upload_to='img')
 
     def __str__(self):
         return self.title

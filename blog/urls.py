@@ -24,11 +24,11 @@ from accounts.views import RegisterFormPage
 urlpatterns = [
     #  path('', main_page, name='main_page'),
     path('admin/', admin.site.urls),
+    path('__debug__/', include('debug_toolbar.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('user/', include('user.urls')),
     path('register/', RegisterFormPage.as_view(), name='RegisterFormPage'),
 
 ]
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

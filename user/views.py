@@ -1,6 +1,9 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.db.models import Count
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
+from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.views import generic
 from django.core.mail import send_mail
@@ -83,7 +86,8 @@ def comment_view(request, pk):
 def profile(request):
     user = request.user
     post = Post.objects.filter(author=user.id, is_published=True)
-    return render(request, 'user/profile.html', {'user': user, 'post': post})
+    comments = Comment.objects.filter(username=request.user).aggregate(Count('id'))
+    return render(request, 'user/profile.html', {'user': user, 'post': post, 'comments': comments['id__count']})
 
 
 def public_profile(request, pk):
@@ -104,14 +108,21 @@ class UpdateData(UpdateView):
 
 
 def contact_us(request):
-    form = ContactUs()
+    data = dict()
     if request.method == 'POST':
         form = ContactUs(request.POST)
         if form.is_valid():
+            data['form_is_valid'] = True
             email = form.cleaned_data['email']
             subject = form.cleaned_data['subject']
             text = form.cleaned_data['text']
             send_mail(subject, text, email, ['admin@example.com'])
             messages.add_message(request, messages.SUCCESS, 'Message sent')
-            return redirect('PostList')
-    return render(request, 'registration/contact_us.html', {'form': form})
+        else:
+            data['form_is_valid'] = False
+    else:
+        form = ContactUs()
+    context = {'form': form}
+    data['html_form'] = render_to_string('user/includes/feedback_create.html', context, request=request)
+    return JsonResponse(data)
+
