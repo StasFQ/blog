@@ -100,6 +100,7 @@ class UpdateData(UpdateView):
         user = self.request.user
         return user
 
+
 @login_required
 def contact_us(request):
     data = dict()
