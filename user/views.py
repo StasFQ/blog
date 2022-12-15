@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy, reverse
 from django.views import generic
+from django.views.decorators.cache import cache_page
 from django.views.generic import UpdateView
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -99,6 +100,7 @@ def profile(request):
     return render(request, 'user/profile.html', {'user': user, 'post': post, 'comments': comments['id__count']})
 
 
+@cache_page(15)
 def public_profile(request, pk):
     user_profile = User.objects.get(id=pk)
     post = Post.objects.filter(author=user_profile.id, is_published=True)
