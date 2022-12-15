@@ -12,7 +12,7 @@ class PostAdmin(admin.ModelAdmin):
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['post', 'username', 'comment']
+    list_display = ['post', 'username', 'comment', 'is_published']
     search_fields = ['username']
 
 

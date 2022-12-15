@@ -1,19 +1,18 @@
-from django.conf import settings
+
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views import generic
 from django.views.generic import UpdateView
 from django.contrib.auth.models import User
 from django.contrib import messages
 
-from accounts.forms import LoginForm
 from user import tasks
-from user.form import PostCreateForm, CommentCreateForm, UpdateUserForm, UpdateProfileForm, ContactUs
-from user.models import Post, Comment, Profile
+from user.form import PostCreateForm, CommentCreateForm, ContactUs
+from user.models import Post, Comment
 
 
 class PostList(generic.ListView):
@@ -61,6 +60,11 @@ class PostDetail(generic.DetailView):
     template_name = 'user/post.html'
     model = Post
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = Comment.objects.filter(post_id=self.kwargs['pk'], is_published=True)
+        return context
+
 
 def not_published_posts(request):
     posts = Post.objects.filter(author=request.user, is_published=False)
@@ -72,13 +76,16 @@ def comment_view(request, pk):
     if request.method == 'POST':
         form = CommentCreateForm(request.POST)
         if form.is_valid():
-            username = request.user
-            comment = form.cleaned_data['comment']
-            Comment.objects.create(username=username, comment=comment, post_id=pk)
+            obj = form.save(commit=False)
+            obj.username = request.user
+            obj.post_id = pk
+            obj.save()
+            url = request.build_absolute_uri(reverse('PostDetail', kwargs={'pk': pk}))
             subject = 'Comment create'
-            text = 'I create comment'
-            email = request.user.email
-            tasks.send_mail.delay(subject, text, email)
+            text = 'I create comment ' + url
+            email_sender = request.user.email
+            email_receiver = obj.post.author.email  # захардкодил что получатель будет один,так как у поста 1 владелец
+            tasks.send_mail_with_comments.delay(subject, text, email_sender, email_receiver)
             messages.add_message(request, messages.SUCCESS, 'Comment sent')
             return redirect('PostDetail', pk)
     return render(request, 'user/comment_view.html', {'form': form})

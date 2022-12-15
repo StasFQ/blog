@@ -16,7 +16,7 @@
     <img src="{{ post.image.url }}" alt="img" width="400" height="250">
 <p>{{ object.text }}</p>
     <h4>Comments</h4>
-{% for comment in object.comment_set.all %}
+{% for comment in comments %}
     {{ comment.username }}
     <p>{{ comment }}</p>
 {% endfor %}

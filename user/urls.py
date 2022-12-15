@@ -2,7 +2,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 
-from user.views import create_posts, PostList, Profile, PostDetail, comment_view, profile, update_post, UpdateData, \
+from user.views import create_posts, PostList, PostDetail, comment_view, profile, update_post, UpdateData, \
     public_profile, not_published_posts, contact_us
 
 urlpatterns = [
