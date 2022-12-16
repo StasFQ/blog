@@ -129,7 +129,6 @@ def contact_us(request):
             subject = form.cleaned_data['subject']
             text = form.cleaned_data['text']
             tasks.send_mail.delay(subject, text, email)
-            messages.add_message(request, messages.SUCCESS, 'Message sent')
         else:
             data['form_is_valid'] = False
     else:
