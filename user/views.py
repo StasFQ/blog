@@ -1,5 +1,6 @@
 
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.db.models import Count
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
@@ -57,14 +58,13 @@ def update_post(request, post_id):
     return render(request, 'user/update_post.html', {'form': form})
 
 
-class PostDetail(generic.DetailView):
-    template_name = 'user/post.html'
-    model = Post
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['comments'] = Comment.objects.filter(post_id=self.kwargs['pk'], is_published=True)
-        return context
+def post_detail(request, pk):
+    post = Post.objects.get(id=pk)
+    comments = Comment.objects.filter(post_id=pk, is_published=True)
+    paginator = Paginator(comments, 3)
+    page = request.GET.get('page')
+    contacts = paginator.get_page(page)
+    return render(request, 'user/post.html', {'contacts': contacts, 'post': post})
 
 
 def not_published_posts(request):

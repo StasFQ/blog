@@ -8,19 +8,38 @@
 </head>
 <body>
 {% block content %}
-{{ object.title }}
-    {% if object.author.id  %}
-    <a href="{% url 'public_profile' object.author.id %}">{{ object.author }}</a>
+{{ post.title }}
+    {% if post.author.id  %}
+    <a href="{% url 'public_profile' post.author.id %}">{{ post.author }}</a>
     {% endif %}
-<p>{{ object.short_description }}</p>
+<p>{{ post.short_description }}</p>
     <img src="{{ post.image.url }}" alt="img" width="400" height="250">
-<p>{{ object.text }}</p>
+<p>{{ post.text }}</p>
+
+
     <h4>Comments</h4>
-{% for comment in comments %}
+{% for comment in contacts %}
     {{ comment.username }}
     <p>{{ comment }}</p>
 {% endfor %}
-<p><a href="{% url 'comment_view' object.id %}">Leave comment</a></p>
+    <div class="pagination">
+    <span class="step-links">
+        {% if contacts.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ contacts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ contacts.number }} of {{ contacts.paginator.num_pages }}.
+        </span>
+
+        {% if contacts.has_next %}
+            <a href="?page={{ contacts.next_page_number }}">next</a>
+            <a href="?page={{ contacts.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
 {% endblock %}
 </body>
 </html>
