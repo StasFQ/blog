@@ -16,4 +16,7 @@ urlpatterns = [
     path('public_profile/<int:pk>', public_profile, name='public_profile'),
     path('not_published_posts/', not_published_posts, name='not_published_posts'),
     path('contact_us/', contact_us, name='contact_us')
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+if settings.DEBUG:
+    urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
