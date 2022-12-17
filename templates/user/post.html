@@ -22,6 +22,7 @@
     {{ comment.username }}
     <p>{{ comment }}</p>
 {% endfor %}
+<p><a href="{% url 'comment_view' post.id %}">Leave comment</a></p>
     <div class="pagination">
     <span class="step-links">
         {% if contacts.has_previous %}

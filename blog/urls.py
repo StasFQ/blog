@@ -22,13 +22,11 @@ from accounts.views import RegisterFormPage
 
 
 urlpatterns = [
-    #  path('', main_page, name='main_page'),
     path('admin/', admin.site.urls),
-    path('__debug__/', include('debug_toolbar.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('user/', include('user.urls')),
     path('register/', RegisterFormPage.as_view(), name='RegisterFormPage'),
-
 ]
 if settings.DEBUG:
     urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns = urlpatterns + path('__debug__/', include('debug_toolbar.urls'))
