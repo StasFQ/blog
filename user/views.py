@@ -34,10 +34,6 @@ def create_posts(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            subject = 'Post create'
-            text = 'I create post'
-            email = request.user.email
-            tasks.send_mail.delay(subject, text, email)
             messages.add_message(request, messages.SUCCESS, 'Post Create!')
             return redirect('PostList')
     return render(request, 'user/create_post.html', {'form': form})
@@ -81,12 +77,6 @@ def comment_view(request, pk):
             obj.username = request.user
             obj.post_id = pk
             obj.save()
-            url = request.build_absolute_uri(reverse('PostDetail', kwargs={'pk': pk}))
-            subject = 'Comment create'
-            text = 'I create comment ' + url
-            email_sender = request.user.email
-            email_receiver = obj.post.author.email  # захардкодил что получатель будет один,так как у поста 1 владелец
-            tasks.send_mail_with_comments.delay(subject, text, email_sender, email_receiver)
             messages.add_message(request, messages.SUCCESS, 'Comment sent')
             return redirect('PostDetail', pk)
     return render(request, 'user/comment_view.html', {'form': form})
@@ -100,7 +90,7 @@ def profile(request):
     return render(request, 'user/profile.html', {'user': user, 'post': post, 'comments': comments['id__count']})
 
 
-@cache_page(15)
+
 def public_profile(request, pk):
     user_profile = User.objects.get(id=pk)
     post = Post.objects.filter(author=user_profile.id, is_published=True)
@@ -125,10 +115,6 @@ def contact_us(request):
         form = ContactUs(request.POST)
         if form.is_valid():
             data['form_is_valid'] = True
-            email = request.user.email
-            subject = form.cleaned_data['subject']
-            text = form.cleaned_data['text']
-            tasks.send_mail.delay(subject, text, email)
         else:
             data['form_is_valid'] = False
     else:
