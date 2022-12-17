@@ -12,7 +12,7 @@ from django.views.generic import UpdateView
 from django.contrib.auth.models import User
 from django.contrib import messages
 
-from user import tasks
+
 from user.form import PostCreateForm, CommentCreateForm, ContactUs
 from user.models import Post, Comment
 
