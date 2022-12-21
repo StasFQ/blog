@@ -1,0 +1,328 @@
+[
+{
+  "model": "auth.user",
+  "pk": 10,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$cn5dMqeSIComngseJ2dhCk$wYxQ0Ela5xkevMmqEOXayIi2iw4EkZ4+4xmgsH7GxdI=",
+    "last_login": "2022-12-21T10:55:21.403Z",
+    "is_superuser": true,
+    "username": "adminchik",
+    "first_name": "",
+    "last_name": "",
+    "email": "example@a.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2022-12-16T15:13:59.151Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 11,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$PzHj8VptYqEzKl87RjnzQ6$CvblCIgcfCCffIj0YU4EPN6WjEv343ASfxXnlwdizk0=",
+    "last_login": "2022-12-16T15:15:36.071Z",
+    "is_superuser": false,
+    "username": "Artem",
+    "first_name": "",
+    "last_name": "",
+    "email": "artem@ukr.net",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-12-16T15:15:35.642Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 12,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$11rFmieT4nDENxHqGRaLYF$86wnxgksagPLKcdrkbpYEkFTcP5GOtUZibKsTjDiO3g=",
+    "last_login": "2022-12-16T15:16:25.031Z",
+    "is_superuser": false,
+    "username": "Alexandr",
+    "first_name": "",
+    "last_name": "",
+    "email": "alex@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-12-16T15:16:24.607Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 13,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$Om2J9VlYOoXrkF5eyovWYl$7XXIW3ilIepSF972Zh+lZ3Bap5Iw+O46+udd/pxL9fw=",
+    "last_login": "2022-12-16T15:16:59.325Z",
+    "is_superuser": false,
+    "username": "Yaroslav",
+    "first_name": "",
+    "last_name": "",
+    "email": "yaroslav@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-12-16T15:16:58.907Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 14,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$KRu2xZfDkfdbb2evkuoxmH$AgWIa3JVNkGi30x0EVwKSgkBesqffTCsiKGWma56tVQ=",
+    "last_login": "2022-12-21T11:34:44.446Z",
+    "is_superuser": false,
+    "username": "Oleg",
+    "first_name": "",
+    "last_name": "",
+    "email": "oleg@ukr.net",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-12-16T15:17:29.157Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 15,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$BmoCN1jVh6EFBARi6TVXBQ$cNN1AydPTPebTm9Zx3lRILRWZjktkY/yrvaQ32irafY=",
+    "last_login": "2022-12-16T15:17:59.484Z",
+    "is_superuser": false,
+    "username": "Stas",
+    "first_name": "",
+    "last_name": "",
+    "email": "stas@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-12-16T15:17:59.073Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 16,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$uqYc1K3WC0m6A1w4KuXUZg$TECHOaXcfROV7nzXkba/rlkelUYYqO5gzBT2kz/nnUg=",
+    "last_login": "2022-12-16T15:19:14.323Z",
+    "is_superuser": false,
+    "username": "Artur",
+    "first_name": "",
+    "last_name": "",
+    "email": "artur@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-12-16T15:18:38.357Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 17,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$ZJoNhQIhcGbFWwdoroXFB5$H1LKazxo5fxhybKVX2wKqxuoBOMFE1oT4qfduboZqcs=",
+    "last_login": "2022-12-19T11:18:01.023Z",
+    "is_superuser": false,
+    "username": "Viktoria",
+    "first_name": "",
+    "last_name": "",
+    "email": "vika@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-12-19T11:18:00.600Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 18,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$xmIN8xMbIeUQnv9lawdxqs$2MYl2gCFT3+Gp8d5TRCybDLLbu0fKbOdVkzTFQOnHtE=",
+    "last_login": "2022-12-21T11:14:53.859Z",
+    "is_superuser": false,
+    "username": "Stas_1",
+    "first_name": "",
+    "last_name": "",
+    "email": "stas@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-12-19T11:33:04.350Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "user.comment",
+  "pk": 49,
+  "fields": {
+    "post": 33,
+    "username": "Stas_1",
+    "comment": "Interesting",
+    "is_published": true
+  }
+},
+{
+  "model": "user.comment",
+  "pk": 50,
+  "fields": {
+    "post": 33,
+    "username": "Stas_1",
+    "comment": "Thanks for info",
+    "is_published": true
+  }
+},
+{
+  "model": "user.comment",
+  "pk": 51,
+  "fields": {
+    "post": 34,
+    "username": "Oleg",
+    "comment": "Wow",
+    "is_published": false
+  }
+},
+{
+  "model": "user.comment",
+  "pk": 52,
+  "fields": {
+    "post": 35,
+    "username": "Oleg",
+    "comment": "Very interesting",
+    "is_published": false
+  }
+},
+{
+  "model": "user.comment",
+  "pk": 53,
+  "fields": {
+    "post": 37,
+    "username": "Oleg",
+    "comment": "Football my favorite kind of sport",
+    "is_published": false
+  }
+},
+{
+  "model": "user.comment",
+  "pk": 54,
+  "fields": {
+    "post": 37,
+    "username": "Oleg",
+    "comment": "I love football",
+    "is_published": false
+  }
+},
+{
+  "model": "user.comment",
+  "pk": 55,
+  "fields": {
+    "post": 37,
+    "username": "Oleg",
+    "comment": "Thanks for info",
+    "is_published": false
+  }
+},
+{
+  "model": "user.comment",
+  "pk": 56,
+  "fields": {
+    "post": 37,
+    "username": "Oleg",
+    "comment": "Interesting",
+    "is_published": false
+  }
+},
+{
+  "model": "user.post",
+  "pk": 33,
+  "fields": {
+    "author": 16,
+    "title": "Ecology",
+    "short_description": "Ecology is the study of the relationships between living organisms",
+    "text": "Ecology (from Ancient Greek οἶκος (oîkos) 'house', and -λογία (-logía) 'study of')[A] is the study of the relationships between living organisms, including humans, and their physical environment. Ecology considers organisms at the individual, population, community, ecosystem, and biosphere level. Ecology overlaps with the closely related sciences of biogeography, evolutionary biology, genetics, ethology, and natural history. Ecology is a branch of biology, and it is not synonymous with environmentalism.",
+    "is_published": true,
+    "image": "img/Unknown-4.jpg"
+  }
+},
+{
+  "model": "user.post",
+  "pk": 34,
+  "fields": {
+    "author": 18,
+    "title": "Computer",
+    "short_description": "A computer is a digital electronic machine that can be programmed to carry out sequences of arithmetic or logical operations (computation) automatically.",
+    "text": "A computer is a digital electronic machine that can be programmed to carry out sequences of arithmetic or logical operations (computation) automatically. Modern computers can perform generic sets of operations known as programs. These programs enable computers to perform a wide range of tasks. A computer system is a nominally complete computer that includes the hardware, operating system (main software), and peripheral equipment needed and used for full operation. This term may also refer to a group of computers that are linked and function together, such as a computer network or computer cluster.",
+    "is_published": true,
+    "image": "img/computer-peripherals-images-laser-printer-inkjet-layout.jpg.webp"
+  }
+},
+{
+  "model": "user.post",
+  "pk": 35,
+  "fields": {
+    "author": 18,
+    "title": "Cryptocurrency",
+    "short_description": "Cryptocurrency is a digital payment system that doesn't rely on banks to verify transactions.",
+    "text": "Cryptocurrency is a digital payment system that doesn't rely on banks to verify transactions. It’s a peer-to-peer system that can enable anyone anywhere to send and receive payments. Instead of being physical money carried around and exchanged in the real world, cryptocurrency payments exist purely as digital entries to an online database describing specific transactions. When you transfer cryptocurrency funds, the transactions are recorded in a public ledger. Cryptocurrency is stored in digital wallets.",
+    "is_published": true,
+    "image": "img/Unknown-3.jpg"
+  }
+},
+{
+  "model": "user.post",
+  "pk": 36,
+  "fields": {
+    "author": 14,
+    "title": "Germany",
+    "short_description": "Germany (German: Deutschland, pronounced [ˈdɔʏtʃlant] (listen)), officially the Federal Republic of Germany,[e] is a country in Central Europe",
+    "text": "Germany (German: Deutschland, pronounced [ˈdɔʏtʃlant] (listen)), officially the Federal Republic of Germany,[e] is a country in Central Europe. It is the second most populous country in Europe after Russia, and the most populous member state of the European Union. Germany is situated between the Baltic and North seas to the north, and the Alps to the south; it covers an area of 357,022 square kilometres (137,847 sq mi), with a population of almost 84 million within its 16 constituent states. Germany borders Denmark to the north, Poland and the Czech Republic to the east, Austria and Switzerland to the south, and France, Luxembourg, Belgium, and the Netherlands to the west. The nation's capital and most populous city is Berlin and its financial centre is Frankfurt; the largest urban area is the Ruhr.",
+    "is_published": true,
+    "image": "img/1200px-Flag_of_Germany.svg.png"
+  }
+},
+{
+  "model": "user.post",
+  "pk": 37,
+  "fields": {
+    "author": 14,
+    "title": "Football!",
+    "short_description": "Football (English football from foot \"foot\" + ball \"ball\") is a team sport in which the goal is to score the ball into the opponent's goal",
+    "text": "Football (English football from foot \"foot\" + ball \"ball\") is a team sport in which the goal is to score the ball into the opponent's goal with the feet or other parts of the body (except for the hands) more times than the opposing team. Currently the most popular and popular sport in the world[1][2][3].",
+    "is_published": true,
+    "image": "img/soccer-ball-goal.jpg.webp"
+  }
+},
+{
+  "model": "user.post",
+  "pk": 38,
+  "fields": {
+    "author": 14,
+    "title": "USA",
+    "short_description": "The United States of America (U.S.A. or USA), commonly known as the United States (U.S. or US) or America, is a country primarily in North America",
+    "text": "The United States of America (U.S.A. or USA), commonly known as the United States (U.S. or US) or America, is a country primarily in North America. It consists of 50 states, a federal district, five major unincorporated territories, nine Minor Outlying Islands,[j] and 326 Indian reservations. It is the world's third-largest country by both land and total area.[d] The United States shares land borders with Canada to its north and with Mexico to its south. It has maritime borders with the Bahamas, Cuba, Russia, and other nations.[k] With a population of over 331 million,[e] it is the most populous country in the Americas and the third most populous in the world. The national capital is Washington, D.C., and the most populous city and financial center is New York City.",
+    "is_published": true,
+    "image": "img/Unknown-5.jpg"
+  }
+},
+{
+  "model": "user.post",
+  "pk": 39,
+  "fields": {
+    "author": 14,
+    "title": "Ukraine",
+    "short_description": "Ukraine (Ukrainian: Україна, romanized: Ukraïna, pronounced [ʊkrɐˈjinɐ] (listen)) is a country in Eastern Europe.",
+    "text": "Ukraine (Ukrainian: Україна, romanized: Ukraïna, pronounced [ʊkrɐˈjinɐ] (listen)) is a country in Eastern Europe. It is the second-largest European country after Russia, which it borders to the east and northeast.[a][11] Ukraine covers approximately 600,000 square kilometres (230,000 sq mi).[b] Prior to the ongoing Russian invasion, it was the eighth-most populous country in Europe, with a population of around 41 million people.[c][6] It is also bordered by Belarus to the north; by Poland, Slovakia, and Hungary to the west; and by Romania and Moldova[d] to the southwest; with a coastline along the Black Sea and the Sea of Azov to the south and southeast.[e] Kyiv is the nation's capital and largest city. Ukraine's state language is Ukrainian; Russian is also widely spoken, especially in the east and south.",
+    "is_published": true,
+    "image": "img/MIT-Ukraine-Update-01_0.jpg"
+  }
+}
+]

@@ -30,7 +30,6 @@ class PostList(generic.ListView):
         return data
 
 
-
 @login_required
 def create_posts(request):
     form = PostCreateForm()
