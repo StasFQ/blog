@@ -7,7 +7,6 @@ from user.views import create_posts, PostList, comment_view, profile, update_pos
 
 urlpatterns = [
     path('create_post/', create_posts, name='create_posts'),
-    path('post_list/', PostList.as_view(), name='PostList'),
     path('profile/', profile, name='Profile'),
     path('post_detail/<int:pk>', post_detail, name='PostDetail'),
     path('comment/<int:pk>', comment_view, name='comment_view'),

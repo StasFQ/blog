@@ -19,12 +19,11 @@ from django.contrib import admin
 from django.urls import path, include
 
 from accounts.views import RegisterFormPage
-
+from user.views import PostList
 
 urlpatterns = [
-    #  path('', main_page, name='main_page'),
+    path('', PostList.as_view(), name='PostList'),
     path('admin/', admin.site.urls),
-    path('__debug__/', include('debug_toolbar.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('user/', include('user.urls')),
     path('register/', RegisterFormPage.as_view(), name='RegisterFormPage'),
@@ -32,3 +31,4 @@ urlpatterns = [
 ]
 if settings.DEBUG:
     urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += path('__debug__/', include('debug_toolbar.urls')),
