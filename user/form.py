@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from user.models import Post, Comment, Profile
+from user.models import Post, Comment
 
 
 class PostCreateForm(forms.ModelForm):
@@ -31,15 +31,6 @@ class UpdateUserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'email']
-
-
-class UpdateProfileForm(forms.ModelForm):
-    avatar = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control-file'}))
-    bio = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5}))
-
-    class Meta:
-        model = Profile
-        fields = ['avatar', 'bio']
 
 
 class ContactUs(forms.Form):

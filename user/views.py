@@ -22,7 +22,7 @@ class PostList(generic.ListView):
     model = Post
     queryset = Post.objects.filter(is_published=True)
     context_object_name = 'Post'
-    paginate_by = 5
+    paginate_by = 3
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)

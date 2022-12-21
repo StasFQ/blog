@@ -2,7 +2,10 @@ from django.conf import settings
 from django.contrib import admin, auth
 from django.contrib.auth import get_user_model
 
-from user.models import Post, Comment, Profile
+from user.models import Post, Comment
+
+
+
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -16,6 +19,6 @@ class CommentAdmin(admin.ModelAdmin):
     search_fields = ['username']
 
 
-admin.site.register(Profile)
+
 admin.site.register(Post, PostAdmin)
 admin.site.register(Comment, CommentAdmin)
