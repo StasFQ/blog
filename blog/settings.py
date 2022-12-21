@@ -58,7 +58,7 @@ ROOT_URLCONF = 'blog.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
         'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -152,7 +152,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 LOGIN_REDIRECT_URL = "/user/profile/"
 
 
-CELERY_TIMEZONE = TIME_ZONE
-CELERY_TASK_TRACK_STARTED = True
-CELERY_BROKER_URL = "amqp://localhost"
-CELERY_TASK_TIME_LIMIT = 30 * 60
+if DEBUG:
+    CELERY_TIMEZONE = TIME_ZONE
+    CELERY_TASK_TRACK_STARTED = True
+    CELERY_BROKER_URL = "amqp://localhost"
+    CELERY_TASK_TIME_LIMIT = 30 * 60
+
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]

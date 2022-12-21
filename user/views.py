@@ -24,6 +24,12 @@ class PostList(generic.ListView):
     context_object_name = 'Post'
     paginate_by = 5
 
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['all_posts'] = Post.objects.aggregate(Count('id'))['id__count']
+        return data
+
+
 
 @login_required
 def create_posts(request):

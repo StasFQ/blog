@@ -16,7 +16,7 @@
     <img src="{{ post.image.url }}" alt="img" width="400" height="250">
 <p>{{ post.text }}</p>
 
-
+{{ count_comments }}
     <h4>Comments</h4>
 {% for comment in contacts %}
     {{ comment.username }}
