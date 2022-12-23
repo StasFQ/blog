@@ -89,7 +89,7 @@ def comment_view(request, pk):
             obj.save()
             url = request.build_absolute_uri(reverse('PostDetail', kwargs={'pk': pk}))
             subject = 'Comment create'
-            text = 'I create comment ' + url
+            text = 'I create comment.Moders will publicate it.Just wait ' + url
             if request.user.is_anonymous:
                 email_sender = 'Anonim'
             else:
