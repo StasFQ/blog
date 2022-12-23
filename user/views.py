@@ -51,7 +51,6 @@ def create_posts(request):
 @login_required
 def update_post(request, post_id):
     post = Post.objects.get(id=post_id)
-    form = PostCreateForm(instance=post)
     if request.method == 'POST':
         form = PostCreateForm(request.POST, instance=post)
         if form.is_valid():
