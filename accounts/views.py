@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
-from accounts.forms import LoginForm, RegisterForm
+from accounts.forms import  RegisterForm
 
 
 class RegisterFormPage(generic.FormView):
