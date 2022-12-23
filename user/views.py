@@ -1,4 +1,4 @@
-
+import django.contrib.auth.models
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.db.models import Count
@@ -11,10 +11,12 @@ from django.views.decorators.cache import cache_page
 from django.views.generic import UpdateView
 from django.contrib.auth.models import User
 from django.contrib import messages
-
+from django.contrib.auth.models import AnonymousUser
 from user import tasks
 from user.form import PostCreateForm, CommentCreateForm, ContactUs
 from user.models import Post, Comment
+
+
 
 
 class PostList(generic.ListView):
@@ -88,7 +90,10 @@ def comment_view(request, pk):
             url = request.build_absolute_uri(reverse('PostDetail', kwargs={'pk': pk}))
             subject = 'Comment create'
             text = 'I create comment ' + url
-            email_sender = request.user.email
+            if request.user.is_anonymous:
+                email_sender = 'Anonim'
+            else:
+                email_sender = request.user.email
             email_receiver = obj.post.author.email  # захардкодил что получатель будет один,так как у поста 1 владелец
             tasks.send_mail_with_comments.delay(subject, text, email_sender, email_receiver)
             messages.add_message(request, messages.SUCCESS, 'Comment sent')
